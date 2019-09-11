@@ -124,7 +124,7 @@ spec:
   logFormat: {{ .Values.logFormat }}
   scrapeInterval: {{ .Values.scrapeInterval }}
   evaluationInterval: {{ .Values.evaluationInterval }}
-{{- if .Values.prometheus.thanos }}
+{{- if and .Values.prometheus .Values.prometheus.thanos }}
   thanos: 
 {{ toYaml .Values.prometheus.thanos | indent 4 }}
 {{- end }}
