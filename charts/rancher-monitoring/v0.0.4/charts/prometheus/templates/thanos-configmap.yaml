@@ -1,3 +1,4 @@
+{{- if .Values.thanos.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,4 +10,5 @@ metadata:
     release: {{ .Release.Name }}
 data:
   thanos.yaml: |
-{{ toYaml .Values.thanos.objectConfig | indent 6 }}      
+{{ toYaml .Values.thanos.objectConfig | indent 6 }}
+{{- end }}
