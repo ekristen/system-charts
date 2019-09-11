@@ -312,6 +312,9 @@ prometheus:
     proxy:
       repository: rancher/nginx
       tag: 1.15.8-alpine
+    thanos:
+      repository: improbable/thanos
+      tag: v0.6.0
   nodeSelectors: []
   resources:
     core:
@@ -366,6 +369,11 @@ prometheus:
     clusterDisplayName: ""
   cluster:
     alertManagerNamespace: ""
+  thanos:
+    enabled: false
+    image:
+      repository: improbable/thanos
+      tag: v0.6.0
 
 global:
   systemDefaultRegistry: ""
