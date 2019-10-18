@@ -1,0 +1,14 @@
+{{- if .Values.thanos.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "app.thanos.fullname" . }}
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ template "app.version" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+data:
+  thanos.yaml: |
+{{ toYaml .Values.thanos.objectConfig | indent 6 }}
+{{- end }}
