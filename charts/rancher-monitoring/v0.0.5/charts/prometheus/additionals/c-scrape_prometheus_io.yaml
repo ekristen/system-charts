@@ -1,11 +1,13 @@
 - job_name: 'prometheus-io-scrape'
   kubernetes_sd_configs:
   - role: pod
+  {{- if .Values.scrapeConfigPodNamespaces }}
     namespaces:
       names:
-      - ingress-nginx
-      - ingress-controller
-      - kube-system
+      {{- range .Values.scrapeConfigPodNamespaces }}
+      - {{ . }}
+      {{- end }}
+  {{- end }}
   relabel_configs:
   - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
     action: keep

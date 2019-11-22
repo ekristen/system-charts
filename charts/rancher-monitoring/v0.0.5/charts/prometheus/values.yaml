@@ -72,6 +72,11 @@ additionalAlertManagerConfigs: []
 #   - targets:
 #     - "localhost:9093"
 
+scrapeConfigPodNamespaces:
+  - ingress-nginx
+  - ingress-controller
+  - kube-system
+
 istioMonitoring:
   enabled: true
   namespace: istio-system
